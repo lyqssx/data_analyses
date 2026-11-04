@@ -8,3 +8,9 @@ App Program initiation analysis with model multi-select, official/customized/sce
 - Static aggregate snapshot; no live credentials or runtime data connection.
 
 Open `index.html` or serve this directory as a static site.
+
+## Per-program breakdown
+
+Official and scene programs are expanded per model with UUID-deduplicated start counts, model share, observed names and Program IDs. The model checkboxes, category toggles and search control the table and CSV export.
+
+Actual runtime is unavailable in the audited comparable-model App sources and is displayed as missing. Card-reported configured durations are shown separately as references; they are not substituted for actual use duration.
