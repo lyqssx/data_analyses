@@ -47,7 +47,6 @@ details[open] .scroll { margin-bottom: 10px; }
 .chart-caption { color: var(--muted); font-size: 13px; text-align: center; margin: 0; }
 .chart-frame { max-width: 1050px; margin: 12px auto; color: var(--orange); }
 .chart-frame.episodes { color: var(--teal); }
-.chart-frame.cumulative-trend polyline { stroke-dasharray: 8 6; }
 .chart-stats { padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; background: #f9fbfd; }
 .chart-stats dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; }
 .chart-stats dt { color: var(--muted); font-size: 12px; }
@@ -71,7 +70,7 @@ footer { font-size: 12px; color: var(--muted); margin: 20px 0 0; }
 <div class="hero"><p class="eyebrow">PUMPING EXPERIENCE / LEFT-RIGHT MODE</p><h1>左右吸乳模式一致性</h1><p class="muted">统计窗口 2026-10-26 — 2026-11-25（UTC，结束日不含） · 按实际可配对的双侧吸奶场次统计</p></div>
 <div class="note"><b>结论</b> 在可判断左右两侧且双方同时运行手动模式的 348,821 场中，有 92,668 场曾出现刺激、吸乳或混合模式不一致，占 <b>26.57%</b>。模式值本身采用同一套语义映射，当前数字判断的是左右实际选择是否一致。</div>
 <div class="cards"><div class="card"><span class="muted">左右模式一致场次</span><strong>256,153</strong><span class="formula">可比场次 − 不一致场次</span></div><div class="card"><span class="muted">左右模式不一致场次</span><strong>92,668</strong><span class="formula">存在任意正时长不一致区间的场次</span></div><div class="card"><span class="muted">不一致场次比例</span><strong>26.57%</strong><span class="formula">不一致场次 ÷ 可比双侧场次</span></div><div class="card"><span class="muted">不一致运行时长占比</span><strong>4.47%</strong><span class="formula">不一致秒数 ÷ 可比双方运行秒数</span></div></div>
-<section class="panel"><h2>每场累计不一致时长分布</h2><p class="muted">横轴是每场累计不一致时长的阈值，纵轴是超过该阈值的场次占比。分母为 92,668 个出现过模式不一致的场次。</p><figure class="chart-frame cumulative-trend"><svg class="chart" role="img" aria-label="每场累计不一致时长分布（不含0秒基准点）" data-series="42.45,26.25,23.39,20.61" data-labels="5,30,60,120" data-step="25"></svg><figcaption class="chart-caption">累计时长阈值（秒）</figcaption></figure><div class="grid2"><div class="chart-stats"><h3>连续不一致区间时长</h3><dl><div><dt>P50</dt><dd>2 秒</dd></div><div><dt>平均</dt><dd>118.74 秒</dd></div><div><dt>P90</dt><dd>308.80 秒</dd></div></dl></div><div class="chart-stats"><h3>每场累计不一致时长</h3><dl><div><dt>P50</dt><dd>4 秒</dd></div><div><dt>平均</dt><dd>181.19 秒</dd></div><div><dt>P90</dt><dd>737.36 秒</dd></div></dl></div></div><p class="formula">不展示 0 秒基准点，因为它只代表所有纳入场次都曾出现过正时长不一致。虚线保留 5、30、60、120 秒阈值的趋势。累计超过 120 秒的有 19,099 场，占 20.61%。</p></section>
+<section class="panel"><h2>每场累计不一致时长分布</h2><p class="muted">横轴是每场累计不一致时长的阈值，纵轴是超过该阈值的场次占比。分母为 92,668 个出现过模式不一致的场次。</p><figure class="chart-frame cumulative-trend"><svg class="chart" role="img" aria-label="每场累计不一致时长分布" data-series="100.00,42.45,26.25,23.39,20.61" data-labels="0,5,30,60,120" data-step="25" data-hide-first="true"></svg><figcaption class="chart-caption">累计时长阈值（秒）</figcaption></figure><div class="grid2"><div class="chart-stats"><h3>连续不一致区间时长</h3><dl><div><dt>P50</dt><dd>2 秒</dd></div><div><dt>平均</dt><dd>118.74 秒</dd></div><div><dt>P90</dt><dd>308.80 秒</dd></div></dl></div><div class="chart-stats"><h3>每场累计不一致时长</h3><dl><div><dt>P50</dt><dd>4 秒</dd></div><div><dt>平均</dt><dd>181.19 秒</dd></div><div><dt>P90</dt><dd>737.36 秒</dd></div></dl></div></div><p class="formula">0–5 秒段只用于观察趋势，使用虚线表示，0 秒点本身不展示。5 秒之后使用实线。累计超过 120 秒的有 19,099 场，占 20.61%。</p></section>
 <section class="panel" id="continuous-mismatch">
 <h2>单个连续不一致区间的时长分布</h2>
 <p class="muted">左右同时运行，且刺激、吸乳或混合模式不同时开始计时。任一侧暂停、结束、进入不可比较的模式，或两侧恢复一致时，该区间结束。同一场可以有多个区间。</p>
@@ -133,13 +132,30 @@ function drawChart(chart, width) {
     x: left + columnWidth * (index + 0.5),
     y: verticalPosition(Number(value))
   }));
-  const coordinates = points.map(({ x, y }) => x + ',' + y).join(' ');
-  appendSvg(chart, 'polyline', {
-    points: coordinates, fill: 'none', stroke: 'currentColor', 'stroke-width': 2.5,
+  const hideFirst = chart.dataset.hideFirst === 'true';
+  const lineAttributes = {
+    fill: 'none', stroke: 'currentColor', 'stroke-width': 2.5,
     'stroke-linecap': 'round', 'stroke-linejoin': 'round'
-  });
+  };
+  if (hideFirst) {
+    appendSvg(chart, 'polyline', {
+      ...lineAttributes,
+      points: points.slice(0, 2).map(({ x, y }) => x + ',' + y).join(' '),
+      'stroke-dasharray': '8 6'
+    });
+    appendSvg(chart, 'polyline', {
+      ...lineAttributes,
+      points: points.slice(1).map(({ x, y }) => x + ',' + y).join(' ')
+    });
+  } else {
+    appendSvg(chart, 'polyline', {
+      ...lineAttributes,
+      points: points.map(({ x, y }) => x + ',' + y).join(' ')
+    });
+  }
 
   points.forEach(({ x, y }, index) => {
+    if (hideFirst && index === 0) return;
     appendSvg(chart, 'circle', { cx: x, cy: y, r: 4, fill: 'currentColor' });
     const staggered = width < 335 && index % 2 === 1;
     const first = width < 335 && index === 0;
