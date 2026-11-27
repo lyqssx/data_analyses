@@ -1,0 +1,116 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>左右模式习惯 · 180秒稳定口径</title><style>
+:root {
+  --ink: #23364a;
+  --muted: #53667c;
+  --blue: #5366cf;
+  --teal: #118274;
+  --orange: #a45b16;
+  --border: #e0e7ef;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #f3f6fa; color: var(--ink); font: 14px/1.65 system-ui, -apple-system, sans-serif; }
+main { width: min(100%, 1280px); margin: auto; padding: 28px; }
+h1 { font-size: 30px; line-height: 1.3; margin: 4px 0 8px; }
+h2 { font-size: 20px; line-height: 1.4; margin: 0 0 8px; }
+h3 { font-size: 14px; margin: 0 0 8px; }
+p { margin: 8px 0; }
+.eyebrow { font-size: 11px; letter-spacing: 1.5px; color: var(--blue); font-weight: 750; }
+.muted, .formula { color: var(--muted); }
+.formula { font-size: 13px; overflow-wrap: anywhere; }
+.hero, .panel, .card { border: 1px solid var(--border); border-radius: 16px; min-width: 0; }
+.hero { background: linear-gradient(135deg, #eef1ff, #f8fbff); padding: 24px; margin-bottom: 18px; }
+.panel { background: white; padding: 24px; margin-top: 16px; }
+.card { background: white; padding: 18px; }
+.cards, .grid2 { display: grid; gap: 14px; }
+.cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card strong { font-size: 30px; line-height: 1.3; display: block; margin: 8px 0; font-variant-numeric: tabular-nums; }
+.note { background: #edf1ff; border: 1px solid #dbe2ff; padding: 14px 18px; border-radius: 12px; margin: 0 0 16px; }
+.warn { background: #fff6e9; border-color: #f2dfbe; margin: 0; }
+.metricline { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; border-bottom: 1px solid #e5ebf2; padding: 11px 0; }
+.metricline strong { font-size: 22px; line-height: 1.3; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.scroll { max-width: 100%; overflow: auto; }
+table { width: 100%; border-collapse: collapse; overflow-wrap: anywhere; }
+th, td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid #e5ebf2; }
+th { font-size: 13px; color: var(--muted); font-weight: 600; background: #f6f8fb; }
+.data-table th:first-child, .data-table td:first-child { width: 24%; }
+.numeric { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+details { margin-top: 12px; border: 1px solid var(--border); border-radius: 10px; padding: 0 12px; }
+summary { cursor: pointer; font-weight: 600; padding: 9px 0; }
+summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+details[open] .scroll { margin-bottom: 10px; }
+.chart { display: block; width: 100%; }
+.chart-grid { stroke: #e5ebf2; }
+.chart-axis { fill: var(--muted); }
+.chart-value { fill: var(--ink); font-weight: 650; paint-order: stroke; stroke: white; stroke-width: 3px; stroke-linejoin: round; }
+.chart-axis, .chart-value { font-size: 13px; font-variant-numeric: tabular-nums; }
+.chart-caption { color: var(--muted); font-size: 13px; text-align: center; margin: 0; }
+.chart-frame { max-width: 1050px; margin: 12px auto; color: var(--orange); }
+.chart-frame.episodes { color: var(--teal); }
+.chart-frame.compact { margin: 12px 0 0; }
+.chart-stats { padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; background: #f9fbfd; }
+.chart-stats dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; }
+.chart-stats dt { color: var(--muted); font-size: 12px; }
+.chart-stats dd { margin: 2px 0 0; font-weight: 650; font-variant-numeric: tabular-nums; }
+footer { font-size: 12px; color: var(--muted); margin: 20px 0 0; }
+@media (max-width: 800px) {
+  main { padding: 16px; }
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  main { padding: 12px; }
+  .panel, .hero, .note { padding: 14px; }
+  .card { padding: 12px; }
+  .card strong, h1 { font-size: 24px; }
+  .grid2 { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .metricline strong { font-size: 19px; }
+  th, td { padding: 7px 6px; font-size: 12px; }
+  .chart-value, .chart-axis { font-size: 11px; }
+}
+
+.section-intro {margin-bottom:16px;} .cards {margin:16px 0;} a {color:var(--blue);} .scope-label {margin:20px 0 8px;font-weight:650;} .chart-frame {margin-top:20px;} .scroll table {min-width:580px;}
+
+.trajectory-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0;} .trajectory-grid .card strong {font-size:24px;} .path-note {font-size:13px;color:var(--muted);} .legend {display:flex;gap:18px;flex-wrap:wrap;margin:12px 0;color:var(--muted);} .legend i {display:inline-block;width:20px;height:3px;vertical-align:middle;margin-right:6px;} .habit-chart {width:100%;display:block;} .scroll table {min-width:540px;} .scope {font-size:13px;color:var(--muted);} .primary-number {color:var(--teal);} @media(max-width:800px){.trajectory-grid {grid-template-columns:repeat(2,minmax(0,1fr));}}
+
+.cards{margin:16px 0}.table-note{margin-top:12px}.legend{margin-top:16px}.muted strong{color:var(--ink)}
+</style></head><body><main><div class="hero"><p class="eyebrow">PUMPING EXPERIENCE / USER TRAJECTORIES</p><h1>左右模式习惯 · 180 秒稳定口径</h1><p class="muted">2026-10-26 至 2026-11-24（UTC） · 2026-11-27 重新统计</p><p><a href="left-right-mode-habits.html">查看此前严格同步版本</a> · <a href="left-right-mode-aligned.html">查看同片段模式一致性</a></p></div><div class="note"><b>本次稳定定义</b>　同一连续可比时段内，每次连续模式不一致均小于 180 秒，就计为稳定。恢复一致、暂停、结束或进入不可比模式会结束该不一致区间。恰好 180 秒计为不稳定。</div><div class="cards"><div class="card"><span class="muted">原人群 · 稳定后持续保持</span><strong>60.66%</strong><span class="formula">879 / 1,449 人</span></div><div class="card"><span class="muted">原人群 · 窗口末稳定</span><strong>67.91%</strong><span class="formula">984 / 1,449 人</span></div><div class="card"><span class="muted">统一口径 · 转为稳定并保持</span><strong>39.58%</strong><span class="formula">76 / 192 人</span></div><div class="card"><span class="muted">全部有效场次达到稳定</span><strong>95.34%</strong><span class="formula">294,479 / 308,870 场</span></div></div><section class="panel"><h2>同一批用户 · 与此前结果对照</h2><p>固定此前的 1,449 位可随访用户，只将后续稳定标准调整为单次连续不一致 &lt;180 秒。首次达到稳定后持续保持的有 <strong>879 人（60.66%）</strong>，窗口末稳定的有 <strong>984 人（67.91%）</strong>。</p><div class="scroll"><table><thead><tr><th>统计项</th><th>此前严格同步</th><th>连续不一致 &lt;180 秒</th></tr></thead><tbody><tr><td>可随访用户</td><td>1,449</td><td>1,449</td></tr><tr><td>首次稳定后持续保持</td><td>133 人 · 9.18%</td><td>879 人 · 60.66%</td></tr><tr><td>窗口末稳定</td><td>148 人 · 10.21%</td><td>984 人 · 67.91%</td></tr></tbody></table></div><p class="formula">原人群的早期定义沿用前 3 场中至少 2 场出现过任意正时长模式不同。这批用户中，不少早期差异本身已小于 180 秒，因此本表用于同人群口径对照；行为转变看下方统一口径人群。</p></section><section class="panel"><h2>早期与后续统一 180 秒 · 行为转变</h2><p>前 3 场中至少 2 场出现过单次连续不一致 ≥180 秒的共有 <strong>443 人</strong>。其中 <strong>192 人</strong>具备足够后续观测，<strong>76 人（39.58%）</strong>首次稳定后持续保持；<strong>77 人（40.10%）</strong>在窗口末处于稳定状态。</p><div class="scroll"><table><thead><tr><th>人群定义</th><th>早期用户</th><th>可随访用户</th><th>观察不足</th><th>稳定后持续保持</th><th>窗口末稳定</th></tr></thead><tbody><tr><td>原早期不同模式人群</td><td>2,855</td><td>1,449</td><td>1,406</td><td>879 · 60.66%</td><td>984 · 67.91%</td></tr><tr><td>早期也按 ≥180 秒识别的人群</td><td>443</td><td>192</td><td>251</td><td>76 · 39.58%</td><td>77 · 40.10%</td></tr></tbody></table></div><p class="formula">主比例 = 首次达到稳定门槛后未再出现 ≥180 秒连续差异的用户数 ÷ 同人群具备足够随访的用户数。后续门槛继续沿用连续至少 5 场、首尾跨至少 7 天，且窗口末 7 个自然日仍有记录。</p></section><section class="panel"><h2>从早期明显不同，到后续稳定</h2><p class="muted">跟踪早期也按 ≥180 秒识别、具备足够随访的 192 位用户。纵轴为该次有效吸奶中所有连续不一致均 &lt;180 秒的用户占比。</p><svg class="habit-chart" id="aligned-chart" role="img" aria-label="统一180秒定义的早期不稳定用户随吸奶序号变化的稳定占比"></svg><p class="formula">前 1–8 场分母均为 192 人。第 9 场起只统计有对应场次的用户，第 20 场为 137 人。第 N 场稳定比例与整个用户轨迹的持续稳定比例分别计量。</p><h3>原固定人群的两种稳定标准</h3><div class="legend"><span><i style="background:var(--teal)"></i>连续不一致 &lt;180 秒</span><span><i style="background:var(--blue)"></i>严格零不一致</span></div><svg class="habit-chart" id="comparison-chart" role="img" aria-label="同一原始人群严格同步与180秒容差稳定比例对照"></svg><details><summary>查看各次使用的样本数与稳定率</summary><div class="scroll"><table><thead><tr><th>第几场</th><th>原人群样本</th><th>原人群 &lt;180秒稳定率</th><th>统一口径样本</th><th>统一口径稳定率</th></tr></thead><tbody><tr><td>1</td><td>1,449</td><td>84.54%</td><td>192</td><td>18.23%</td></tr><tr><td>2</td><td>1,449</td><td>83.02%</td><td>192</td><td>8.85%</td></tr><tr><td>3</td><td>1,449</td><td>85.37%</td><td>192</td><td>21.35%</td></tr><tr><td>4</td><td>1,449</td><td>88.41%</td><td>192</td><td>46.35%</td></tr><tr><td>5</td><td>1,449</td><td>88.89%</td><td>192</td><td>51.04%</td></tr><tr><td>6</td><td>1,449</td><td>88.82%</td><td>192</td><td>54.17%</td></tr><tr><td>7</td><td>1,449</td><td>89.51%</td><td>192</td><td>55.73%</td></tr><tr><td>8</td><td>1,449</td><td>90.13%</td><td>192</td><td>58.33%</td></tr><tr><td>9</td><td>1,410</td><td>89.79%</td><td>190</td><td>56.84%</td></tr><tr><td>10</td><td>1,385</td><td>89.75%</td><td>186</td><td>60.22%</td></tr><tr><td>11</td><td>1,346</td><td>90.86%</td><td>179</td><td>63.13%</td></tr><tr><td>12</td><td>1,306</td><td>92.88%</td><td>174</td><td>68.39%</td></tr><tr><td>13</td><td>1,262</td><td>92.39%</td><td>169</td><td>65.68%</td></tr><tr><td>14</td><td>1,229</td><td>91.46%</td><td>161</td><td>65.22%</td></tr><tr><td>15</td><td>1,194</td><td>91.62%</td><td>154</td><td>64.29%</td></tr><tr><td>16</td><td>1,158</td><td>93.35%</td><td>149</td><td>70.47%</td></tr><tr><td>17</td><td>1,131</td><td>92.57%</td><td>148</td><td>66.22%</td></tr><tr><td>18</td><td>1,098</td><td>92.44%</td><td>144</td><td>66.67%</td></tr><tr><td>19</td><td>1,073</td><td>91.71%</td><td>141</td><td>63.83%</td></tr><tr><td>20</td><td>1,047</td><td>92.74%</td><td>137</td><td>65.69%</td></tr></tbody></table></div></details></section><section class="panel"><h2>达到稳定后是否再次出现明显差异</h2><div class="scroll"><table><thead><tr><th>人群</th><th>用户轨迹（各组内互斥）</th><th>人数</th><th>占可随访用户</th></tr></thead><tbody><tr><td>原固定人群</td><td>首次达到稳定后持续保持</td><td>879</td><td>60.66%</td></tr><tr><td>原固定人群</td><td>曾稳定、再次 ≥180秒、后来恢复稳定</td><td>105</td><td>7.25%</td></tr><tr><td>原固定人群</td><td>曾稳定、再次 ≥180秒、窗口末未恢复稳定</td><td>236</td><td>16.29%</td></tr><tr><td>原固定人群</td><td>观察期内尚未达到稳定门槛</td><td>229</td><td>15.80%</td></tr><tr><td>统一 180 秒早期人群</td><td>首次达到稳定后持续保持</td><td>76</td><td>39.58%</td></tr><tr><td>统一 180 秒早期人群</td><td>曾稳定、再次 ≥180秒、后来恢复稳定</td><td>1</td><td>0.52%</td></tr><tr><td>统一 180 秒早期人群</td><td>曾稳定、再次 ≥180秒、窗口末未恢复稳定</td><td>30</td><td>15.62%</td></tr><tr><td>统一 180 秒早期人群</td><td>观察期内尚未达到稳定门槛</td><td>85</td><td>44.27%</td></tr></tbody></table></div></section><section class="panel"><h2>片段判定与边界</h2><div class="scroll"><table><thead><tr><th>情形</th><th>判定</th></tr></thead><tbody><tr><td>没有模式不一致</td><td>稳定，最长连续差异为 0 秒</td></tr><tr><td>一次连续不一致 179 秒</td><td>稳定</td></tr><tr><td>一次连续不一致 180 秒</td><td>不稳定</td></tr><tr><td>一次连续不一致超过 180 秒</td><td>不稳定</td></tr><tr><td>出现两段不一致，各 120 秒，中间恢复一致</td><td>稳定，两段各自均小于 180 秒</td></tr><tr><td>两侧虽切换了模式，但始终不同，前后连续</td><td>合并为同一不一致区间，直到恢复一致或退出可比状态</td></tr><tr><td>任一侧暂停、结束或进入不可比模式</td><td>当前区间结束，下一段重新计算</td></tr></tbody></table></div><p class="formula">单场稳定条件 = 该场所有连续不一致区间的最大时长 &lt;180 秒。窗口中最长连续差异恰好为 180 秒的有 20 场，已归入不稳定。有效吸奶、≤180 秒起泵差、同一连续片段和左右模式差异容差分别应用各自规则。</p></section><section class="panel"><h2>统一清洗与来源字段</h2><div class="scroll"><table><thead><tr><th>项目</th><th>本次口径</th></tr></thead><tbody><tr><td>分析窗口</td><td>2026-10-26 00:00 ≤ 事件时间 &lt; 2026-11-25 00:00，UTC。</td></tr><tr><td>有效双侧吸奶</td><td>实际运行 &gt;300 秒或唯一关联到已登记正奶量。沿用来源 1–4、未删除、正奶量、同用户同区域、记录时间位于场次首尾 ±15 秒的唯一匹配。</td></tr><tr><td>清洗规则</td><td>单侧首尾完整、时间戳状态无冲突、左右双向唯一配对；任一单侧会话首尾跨度 &gt;7,200 秒剔除；左右起泵差 ≤180 秒。</td></tr><tr><td>可比片段</td><td>左右同时运行，且双方均为刺激、吸乳或混合模式；暂停、结束或进入不可比状态切断片段。连续不同的原子区间合并后取时长。</td></tr><tr><td>早期基准</td><td>窗口内按时间排序的前 3 场。保留原人群对照，统一口径人群要求其中至少 2 场出现单段 ≥180 秒差异。</td></tr><tr><td>足够随访</td><td>前 3 场之后至少 5 场，后续首场至最后一场跨度 ≥7×24 小时，最后一场不早于 2026-11-18。</td></tr><tr><td>稳定使用习惯</td><td>前 3 场之后连续至少 5 场符合 &lt;180 秒稳定标准，且首尾跨度 ≥7 天。首次达到后如再出现 ≥180 秒差异则记为反复。</td></tr><tr><td>观察边界</td><td>早期为窗口内首次清洗观测，稳定截至最后一次可观察场次；本页未覆盖完整使用生命周期。观察不足用户单列。</td></tr></tbody></table></div><div class="scroll"><table><thead><tr><th>原始来源</th><th>字段</th><th>用途</th></tr></thead><tbody><tr><td>metabase:model:580 · dwd_tp_app_breast_pump_log_di</td><td>uid、data_source、devicecode、deviceside、pump_device_id、usesessionid、pump_session_id、eventname、evttype、evttimestamp_dt、extradata.initialModeType、adjustto</td><td>业务场次配对、连续片段、模式状态、单次连续差异时长与纵向序列</td></tr><tr><td>metabase:model:518 · dwd_usr_breast_suck_record_ext_di</td><td>uid、data_source、id、source、deleted、left_capacity_check、right_capacity_check、operate_time_stamp、operate_time_check、create_time</td><td>有效吸奶的奶量记录关联</td></tr></tbody></table></div><details><summary>查看查询校验编号</summary><p class="formula">7e2875f4-dd6c-417a-84f5-6c86f2c38686 · 080a7c54-505c-4103-9340-3290919b1aef · b1a91515-49b6-4312-9cc0-e72920c2d4c4 · b927d5df-ecf2-4855-9894-e12723dd7230</p></details></section><footer>聚合快照 · 180 秒稳定容差修订 · 2026-11-27</footer></main><script>const svgNamespace='http://www.w3.org/2000/svg';
+function addSvg(parent,tag,attributes,text){
+ const node=document.createElementNS(svgNamespace,tag);
+ for(const [name,value] of Object.entries(attributes))node.setAttribute(name,value);
+ if(text!==undefined)node.textContent=text;
+ parent.append(node);return node;
+}
+function renderChart(svg,width,series,maxY,xLabel){
+ const height=width<500?270:310;
+ const left=width<500?45:56,right=width-36,top=32,bottom=height-48;
+ svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.setAttribute('height',height);svg.replaceChildren();
+ const xMin=series[0].values[0].x,xMax=series[0].values.at(-1).x;
+ const xFor=x=>left+(x-xMin)/(xMax-xMin)*(right-left),yFor=y=>bottom-y/maxY*(bottom-top);
+ for(let i=0;i<=4;i++){
+  const value=maxY*i/4,y=yFor(value);
+  addSvg(svg,'line',{x1:left,x2:right,y1:y,y2:y,class:'chart-grid'});
+  addSvg(svg,'text',{x:left-7,y,'text-anchor':'end','dominant-baseline':'middle',class:'chart-axis'},`${value}%`);
+ }
+ const ticks=series[0].values.length>5?(width<500?[1,4,8,12,16,20]:[1,2,3,4,6,8,10,12,14,16,18,20]):series[0].values.map(p=>p.x);
+ for(const tick of ticks)addSvg(svg,'text',{x:xFor(tick),y:bottom+20,'text-anchor':'middle',class:'chart-axis'},String(tick));
+ series.forEach((line,lineIndex)=>{
+  addSvg(svg,'polyline',{points:line.values.map(p=>`${xFor(p.x)},${yFor(p.y)}`).join(' '),fill:'none',stroke:line.color,'stroke-width':2.5,'stroke-linejoin':'round','stroke-linecap':'round'});
+  line.values.forEach((point,pointIndex)=>{
+   const x=xFor(point.x),y=yFor(point.y);
+   const circle=addSvg(svg,'circle',{cx:x,cy:y,r:3.5,fill:line.color});
+   addSvg(circle,'title',{},`${line.name} · 第${point.x}场 · ${point.y.toFixed(2)}% · ${point.n}/${point.den}人`);
+   if(line.values.length<=5||point.x===1||point.x===4||point.x===8||point.x===20){
+    addSvg(svg,'text',{x:pointIndex===0?x+8:x,y:y-12,'text-anchor':pointIndex===0?'start':'middle',class:'chart-value'},`${point.y.toFixed(2)}%`);
+   }
+  });
+ });
+ addSvg(svg,'text',{x:(left+right)/2,y:height-4,'text-anchor':'middle',class:'chart-axis'},xLabel);
+}
+
+const charts=[{"id":"aligned-chart","series":[{"name":"<180\u79d2\u7a33\u5b9a","color":"var(--teal)","values":[{"x":1,"y":18.229166666666664,"n":35,"den":192},{"x":2,"y":8.854166666666668,"n":17,"den":192},{"x":3,"y":21.354166666666664,"n":41,"den":192},{"x":4,"y":46.35416666666667,"n":89,"den":192},{"x":5,"y":51.041666666666664,"n":98,"den":192},{"x":6,"y":54.166666666666664,"n":104,"den":192},{"x":7,"y":55.729166666666664,"n":107,"den":192},{"x":8,"y":58.333333333333336,"n":112,"den":192},{"x":9,"y":56.84210526315789,"n":108,"den":190},{"x":10,"y":60.215053763440864,"n":112,"den":186},{"x":11,"y":63.128491620111724,"n":113,"den":179},{"x":12,"y":68.39080459770115,"n":119,"den":174},{"x":13,"y":65.68047337278107,"n":111,"den":169},{"x":14,"y":65.21739130434783,"n":105,"den":161},{"x":15,"y":64.28571428571429,"n":99,"den":154},{"x":16,"y":70.46979865771812,"n":105,"den":149},{"x":17,"y":66.21621621621621,"n":98,"den":148},{"x":18,"y":66.66666666666666,"n":96,"den":144},{"x":19,"y":63.829787234042556,"n":90,"den":141},{"x":20,"y":65.69343065693431,"n":90,"den":137}]}],"maxY":100,"label":"\u7a97\u53e3\u5185\u7b2c\u51e0\u6b21\u6709\u6548\u53cc\u4fa7\u5438\u5976"},{"id":"comparison-chart","series":[{"name":"<180\u79d2\u7a33\u5b9a","color":"var(--teal)","values":[{"x":1,"y":84.54106280193237,"n":1225,"den":1449},{"x":2,"y":83.02277432712215,"n":1203,"den":1449},{"x":3,"y":85.36922015182886,"n":1237,"den":1449},{"x":4,"y":88.40579710144928,"n":1281,"den":1449},{"x":5,"y":88.88888888888889,"n":1288,"den":1449},{"x":6,"y":88.81987577639751,"n":1287,"den":1449},{"x":7,"y":89.51000690131124,"n":1297,"den":1449},{"x":8,"y":90.1311249137336,"n":1306,"den":1449},{"x":9,"y":89.7872340425532,"n":1266,"den":1410},{"x":10,"y":89.74729241877256,"n":1243,"den":1385},{"x":11,"y":90.86181277860327,"n":1223,"den":1346},{"x":12,"y":92.87901990811639,"n":1213,"den":1306},{"x":13,"y":92.39302694136292,"n":1166,"den":1262},{"x":14,"y":91.45646867371848,"n":1124,"den":1229},{"x":15,"y":91.62479061976549,"n":1094,"den":1194},{"x":16,"y":93.35060449050087,"n":1081,"den":1158},{"x":17,"y":92.57294429708223,"n":1047,"den":1131},{"x":18,"y":92.4408014571949,"n":1015,"den":1098},{"x":19,"y":91.70549860205033,"n":984,"den":1073},{"x":20,"y":92.74116523400191,"n":971,"den":1047}]},{"name":"\u4e25\u683c\u96f6\u4e0d\u4e00\u81f4","color":"var(--blue)","values":[{"x":1,"y":15.873015873015872,"n":230,"den":1449},{"x":2,"y":15.458937198067632,"n":224,"den":1449},{"x":3,"y":18.909592822636302,"n":274,"den":1449},{"x":4,"y":34.78260869565217,"n":504,"den":1449},{"x":5,"y":35.26570048309179,"n":511,"den":1449},{"x":6,"y":34.78260869565217,"n":504,"den":1449},{"x":7,"y":35.61076604554865,"n":516,"den":1449},{"x":8,"y":36.231884057971016,"n":525,"den":1449},{"x":9,"y":36.02836879432624,"n":508,"den":1410},{"x":10,"y":37.328519855595665,"n":517,"den":1385},{"x":11,"y":40.341753343239226,"n":543,"den":1346},{"x":12,"y":39.66309341500766,"n":518,"den":1306},{"x":13,"y":40.1743264659271,"n":507,"den":1262},{"x":14,"y":39.300244100895036,"n":483,"den":1229},{"x":15,"y":39.028475711892796,"n":466,"den":1194},{"x":16,"y":38.255613126079446,"n":443,"den":1158},{"x":17,"y":39.345711759504866,"n":445,"den":1131},{"x":18,"y":40.16393442622951,"n":441,"den":1098},{"x":19,"y":39.79496738117428,"n":427,"den":1073},{"x":20,"y":40.49665711556829,"n":424,"den":1047}]}],"maxY":100,"label":"\u7a97\u53e3\u5185\u7b2c\u51e0\u6b21\u6709\u6548\u53cc\u4fa7\u5438\u5976"}];
+for(const config of charts){
+ const element=document.getElementById(config.id);
+ const observer=new ResizeObserver(entries=>{for(const entry of entries)if(entry.contentRect.width>0)renderChart(element,entry.contentRect.width,config.series,config.maxY,config.label);});
+ observer.observe(element.parentElement);
+}
+</script></body></html>
