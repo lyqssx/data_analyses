@@ -95,12 +95,12 @@ function renderChart(svg,width,series,maxY,xLabel){
  for(const tick of ticks)addSvg(svg,'text',{x:xFor(tick),y:bottom+20,'text-anchor':'middle',class:'chart-axis'},String(tick));
  series.forEach((line,lineIndex)=>{
   addSvg(svg,'polyline',{points:line.values.map(p=>`${xFor(p.x)},${yFor(p.y)}`).join(' '),fill:'none',stroke:line.color,'stroke-width':2.5,'stroke-linejoin':'round','stroke-linecap':'round'});
-  line.values.forEach(point=>{
+  line.values.forEach((point,pointIndex)=>{
    const x=xFor(point.x),y=yFor(point.y);
    const circle=addSvg(svg,'circle',{cx:x,cy:y,r:3.5,fill:line.color});
    addSvg(circle,'title',{},`${line.name} · 第${point.x}场 · ${point.y.toFixed(2)}% · ${point.n}/${point.den}人`);
    if(line.values.length<=5||point.x===1||point.x===4||point.x===8||point.x===20){
-    addSvg(svg,'text',{x,y:y-12,'text-anchor':'middle',class:'chart-value'},`${point.y.toFixed(2)}%`);
+    addSvg(svg,'text',{x:pointIndex===0?x+8:x,y:y-12,'text-anchor':pointIndex===0?'start':'middle',class:'chart-value'},`${point.y.toFixed(2)}%`);
    }
   });
  });
